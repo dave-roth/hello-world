@@ -84,19 +84,50 @@ The position of the elements are reversed when rendered using dir=rtl as compare
 No specific accessibility requirements.
 
 ## React Props:
-| Prop     | Type | Default | Description  |
-|----------|------|---------|--------------|
-| level | string | null    | JSX children |
+| Prop             | Type    | Default | Description  |
+|------------------|---------|---------|--------------|
+| level            | string  | ""      | (Required prop) The level at which the alert is to be displayed. Possible values are "section" and "site" |
+| type             | string  | ""      | (Required prop) The notification level for the alert. Allowable values are "alert", "error", "warning", "required", "advisory", "custom", "information" and "confirmation"  |
+| dismissible      | boolean | false   | Indicates whether user can dismiss/hide the Alert.  |
+| autoDismissDelay | number  | 0       | Number of seconds that a dissmissible Alert should remain visible before being automatically dismissed. The default vaue of 0 indicates that the Alert will not be dismissed automatically. |
+| messageTitle     | string  | ""      | (Required prop) Title of the message to be displayed in the Alert.  |
+| messageText      | string  | ""      | (Required prop) Text of the message to be displayed inthe Alert.  |
+| customStyle      | string  | ""      | The base style to be applied for a custom Alert type.  |
 
 ## Example:
+The following example shows how you would create a section-level Alert of type error that is not dismissible.
 ```
-<Component
-  intent="primary"
-  size="huge"
+<Alert
+  level="section"
+  type="error"
+  messageTitle="Error!"
+  messageText="An error has occurred."
 />
 ```
 
+The following example shows how you would create a site-level Alert of type alert that is dismissible, and it will automatically be dismissed after 10 seconds.
+```
+<Alert
+  level="site"
+  type="alert"
+  messageTitle="Alert!"
+  messageText="You must pay attention to this."
+  dismissible=true
+  autoDismissDelay=10
+/>
+```
+
+
 ## CSS Classes:
-| Selector         | Description |
-|------------------|-------------|
-| .terra-Component | ....        |
+| Selector                  | Description |
+|---------------------------|-------------|
+| .terra-Alert-alert        | class for Alert of type alert        |
+| .terra-Alert-error        | class for Alert of type error        |
+| .terra-Alert-warning      | class for Alert of type warning      |
+| .terra-Alert-required     | class for Alert of type required     |
+| .terra-Alert-advisory     | class for Alert of type sdvisory     |
+| .terra-Alert-custom       | class for Alert of type custom       |
+| .terra-Alert-information  | class for Alert of type information  |
+| .terra-Alert-confirmation | class for Alert of type confirmation |
+| .terra-Alert-site-level   | class for site level Alert           |
+| .terra-Alert-dismissible  | class for dismissible Alert          |
