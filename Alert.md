@@ -128,7 +128,7 @@ The following example shows how you would create an advisory Alert, overriding t
   isDismissible=true,
   alertAction={<BUTTON ...>Custom Action</BUTTON>}
 >
-  This is an <U>advisory</U> notice.
+  <SPAN>This is an <U>advisory</U> notice.</SPAN>
 </Alert>
 ```
   
