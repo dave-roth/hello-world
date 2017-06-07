@@ -11,49 +11,49 @@ The Terra Alert consists of the following visual components:
     - Message: text or HTML content providing more detail of the alert.
   - Action Area: Optional area of the Alert containing actionable elements. The Action Area will be rendered in the fitEnd container of the Terra Arrange component.  This area can include one or both of the following:
     - Custom Action Element: The consuming application can include an alert-specific action element which would allow the user to act on the alert. This would typically be a button, but can consist of other HTML elements if desired.
-    - Dismiss button: The consuming application can configure whether the Alert is dismissible or not. If it is dismissible, a Dismiss button will be included in the Action Area.  It will be rendered at the end of the Action Area.
+    - Dismiss button: The consuming application can configure whether the Alert is dismissible or not based on whether the onDismiss prop is provided. If it is dismissible, a Dismiss button will be included in the Action Area.  It will be rendered at the end of the Action Area.
   
 The Terra Alert supports eight notification types:
 - Alert: indicates that something requires the user's immediate attention.  Alerts of this type have the following characteristics:
-  - Red status bar
+  - Red status bar ($terra-red-70)
   - Alert Icon: use <IconAlert/> component.
-  - Red Message Title
-  - Red Container background color
+  - Red Message Title ($terra-red-70)
+  - Red Container background color ($terra-red-20)
 - Error: indicates that something has gone wrong.  Alerts of this type have the following characteristics:
-  - Red status bar
+  - Red status bar ($terra-red-70)
   - Error icon: use <IconError/> component.
-  - Red Message Title
-  - Red Container background color
+  - Red Message Title ($terra-red-70)
+  - Red Container background color ($terra-red-20)
 - Warning: indicates that some condition needs attention. Alerts of this type have the following characteristics:
-  - Yellow status bar
+  - Yellow status bar ($terra-yellow-60)
   - Warning icon: use <IconWarning/> component.
-  - Black message title
-  - Yellow Container background color
+  - Black message title 
+  - Yellow Container background color ($terra-yellow-20)
 - Required: indicates that something is required. Alerts of this type have the following characteristics:
-  - Red status bar
+  - Red status bar ($terra-red-70)
   - Required icon: use <IconRequired/> component.
   - Black message title
-  - Grey Container background color
+  - Grey Container background color ($terra-grey-5)
 - Advisory: indicates when a special situation arises. Alerts of this type have the following characteristics:
-  - Purple status bar
+  - Purple status bar ($terra-purple-80)
   - Advisory icon: use <IconDiamond/> component.
   - Black message title
-  - Grey Container background color
+  - Grey Container background color ($terra-grey-5)
 - Information: provides neutral supplemental information. Alerts of this type have the following characteristics:
-  - Blue status bar
+  - Blue status bar ($terra-blue-70)
   - Information icon: use <IconInformation/> component.
   - Black message title
-  - Grey Container background color
+  - Grey Container background color ($terra-grey-5)
 - Confirmation: indicates when a user's action was successful. Alerts of this type have the following characteristics:
-  - Green status bar
+  - Green status bar ($terra-green-60)
   - Confirmation icon: use <IconSuccess/> component.
   - Black message title
-  - Grey Container background color
+  - Grey Container background color ($terra-grey-5)
 - Custom: based on custom requirements of consuming application. Alerts of this type have the following characteristics:
   - Variable status bar color based on requirements of consuming application.
   - Variable icon based on requirements of consuming application. Application will provide an element of either a Terra Icon or Terra Image for the icon if desired.
   - Black message title
-  - Grey Container background color
+  - Grey Container background color ($terra-grey-5)
 
 ## Requirements:
 - [Alert Component Requirements](https://wiki.ucern.com/display/Orion/ORI040+Alert+Component)
@@ -82,7 +82,7 @@ No specific accessibility requirements.
 | type                  | string  | ""      | (Required prop) The notification level for the alert. Allowable values are "alert", "error", "warning", "required", "advisory", "custom", "information" and "confirmation".  These values will be available as exported constants.  See below for how the constants will be defined.  |
 | title                 | string  | ""      | Optional title of the message to be displayed in the Alert. For the pre-defined alert types, if no title is provided, then a default internationalized title appropriate for the type will be used. For the custom alert type, no default title can be applied so it is the responsibility of the consuming application to supply the title for a custom alert. |
 | children              | string or element  | null      | The message content for the alert. The content can simply be a text string or it can be an HTML element if the consuming application requires formatted content.  |
-| isDismissible         | boolean | false   | Indicates whether the Dismiss button will be rendered in the Action Area of the alert.  When the Dismiss button is clicked, the alert will be hidden.  |
+| onDismiss             | func    | null    | Callback function to be called when the Dismiss button is clicked.  The Dismiss button will only be rendered when this prop is provided by the application.  |
 | alertAction           | element | null    | An HTML element, typically a button, that will be added to the Action Area of the alert.  This action element is controlled by the consuming application.  The Terra Alert component itself will not take any action when the user interacts with this element.  |
 | customStatusColor     | string  | ""      | The color to be used for the status bar for a Custom Alert type.  |
 | customIcon            | element | null    | The icon to be used for the Custom Alert type.  This can be the output of a Terra Icon or Terra Image component. |
@@ -125,7 +125,7 @@ The following example shows how you would create an advisory Alert, overriding t
 <Alert
   type=AlertTypes.ADVISORY
   title="Advisory Notice!"
-  isDismissible=true,
+  onDismiss={this.handleDismiss},
   alertAction={<BUTTON ...>Custom Action</BUTTON>}
 >
   <SPAN>This is an <U>advisory</U> notice.</SPAN>
