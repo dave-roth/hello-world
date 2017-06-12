@@ -106,14 +106,14 @@ Alert.Types = AlertTypes;
 ## Example:
 The following example shows how you would create an Alert of type error using the default title.
 ```
-<Alert type=AlertTypes.ERROR>This is the error text.</Alert>
+<Alert type=Alert.Types.ERROR>This is the error text.</Alert>
 
 ```
 
 The following example shows how you would create an Alert of type custom that uses the <IconHelp/> Terra Icon component and sets the status bar color to orange.
 ```
 <Alert
-  type=AlertTypes.CUSTOM
+  type=Alert.Types.CUSTOM
   title="Help!"
   CustomAlertStatusColor="orange"
   CustomAlertIcon={<IconHelp/>}
@@ -125,7 +125,7 @@ The following example shows how you would create an Alert of type custom that us
 The following example shows how you would create an advisory Alert, overriding the default title, providing some formatted HTML for the message, allowing it to be dismissible and providing an action button.
 ```
 <Alert
-  type=AlertTypes.ADVISORY
+  type=Alert.Types.ADVISORY
   title="Advisory Notice!"
   onDismiss={this.handleDismiss},
   alertAction={<BUTTON ...>Custom Action</BUTTON>}
