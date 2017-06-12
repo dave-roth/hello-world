@@ -79,7 +79,7 @@ No specific accessibility requirements.
 ## React Props:
 | Prop                  | Type    | Default | Description  |
 |-----------------------|---------|---------|--------------|
-| type                  | string  | ""      | (Required prop) The notification level for the alert. Allowable values are "alert", "error", "warning", "required", "advisory", "custom", "information" and "confirmation".  These values will be available as exported constants.  See below for how the constants will be defined.  |
+| type                  | string  | ""      | (Required prop) The notification level for the alert. Allowable values are "alert", "error", "warning", "required", "advisory", "custom", "information" and "confirmation".  These values will be available as constants in an attribute of the Alert component.  See below for how the constants will be defined.  |
 | title                 | string  | ""      | Optional title of the message to be displayed in the Alert. For the pre-defined alert types, if no title is provided, then a default internationalized title appropriate for the type will be used. For the custom alert type, no default title can be applied so it is the responsibility of the consuming application to supply the title for a custom alert. |
 | children              | string or element  | null      | The message content for the alert. The content can simply be a text string or it can be an HTML element if the consuming application requires formatted content.  |
 | onDismiss             | func    | null    | Callback function to be called when the Dismiss button is clicked.  The Dismiss button will only be rendered when this prop is provided by the application.  |
