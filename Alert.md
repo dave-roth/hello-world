@@ -87,7 +87,7 @@ No specific accessibility requirements.
 | customStatusColor     | string  | ""      | The color to be used for the status bar for a Custom Alert type.  |
 | customIcon            | element | null    | The icon to be used for the Custom Alert type.  This can be the output of a Terra Icon or Terra Image component. |
 
-The Alert component will export constants that can be used when specifying the alert type.
+The Alert component will provide an attribute (Alert.Types) containing constants that can be used when specifying the alert type.
 ```
 const AlertTypes = {
   ALERT: "alert",
@@ -99,6 +99,8 @@ const AlertTypes = {
   INFORMATION: "information",
   CONFIRMATION: "confirmation"
 }
+. . .
+Alert.Types = AlertTypes;
 ```
 
 ## Example:
